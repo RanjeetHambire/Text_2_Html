@@ -1,0 +1,100 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <meta name="description" content="This web app converts lists in text format to a specified HTML tag." />
+  <link rel="stylesheet" href="media.css">
+  <link rel="stylesheet" href="style.css" />
+  <title>Text To HTML</title>
+</head>
+
+<body>
+  <main>
+    <h1>Text To HTML Convert</h1>
+    <div id="converter-controls">
+
+      <!-- List is separated by: -->
+
+      <div class="radio-selector" id="separate-by">
+        <b>List is separated by:</b>
+        <div class="select-line">
+          <input type="radio" name="separate-by" value="separate-new-lines" checked onclick="convertList()" />
+          <label for="new-lines">New lines</label>
+        </div>
+        <div class="select-line">
+          <input type="radio" name="separate-by" value="separate-commas" onclick="convertList()" />
+          <label for="commas">Commas(,)</label>
+        </div>
+        <div class="select-line">
+          <input type="radio" name="separate-by" value="separate-custom" />
+          <label for="separate-custom">Custom: </label>
+          <input type="text" placeholder="e.g. |" name="separate-custom-input" id="separate-custom-input" />
+        </div>
+        <div class="select-line">
+          <input type="checkbox" id="remove-duplicates" />
+          <label for="remove-duplicates">Remove Duplicates</label>
+        </div>
+      </div>
+
+      <!-- Display converted list as: -->
+
+      <div class="radio-selector" id="display-by">
+        <b>Display converted list as:</b>
+        <div class="select-line">
+          <input type="radio" name="display-as" value="html-list" checked onclick="convertList()" />
+          <label for="html-list">HTML List <br><small><xmp><li>Sample item</li></xmp></small></label>
+        </div>
+        <div class="select-line">
+          <input type="radio" name="display-as" value="html-select" onclick="convertList()" />
+          <label for="html-select">HTML Select<br><small><xmp><select><option>Sample item</option></select></xmp></small></label>
+        </div>
+        <div class="select-line">
+          <input type="radio" name="display-as" value="html-custom"/>
+          <label for="html-custom">Custom Tag: 
+          <input type="text" name="custom-tag" id="custom-tag" placeholder="tag"><br><small><xmp><tag>Sample item</tag></xmp></small></label>
+        </div>
+      </div>
+
+      <!-- Value format: -->
+
+      <div class="radio-selector" id="value-options">
+        <b>Value format:</b>
+        <div class="select-line">
+          <input type="radio" name="value-format" value="no-value" checked onclick="convertList()" />
+          <label for="no-value">No value<br><small><xmp><tag>Sample item</tag></xmp></small></label>
+        </div>
+        <div class="select-line">
+          <input type="radio" name="value-format" value="first-word" onclick="convertList()" />
+          <label for="first-word">First word only<br><small><xmp><tag value="sample">Sample item</tag></xmp></small></label>
+        </div>
+        <div class="select-line">
+          <input type="radio" name="value-format" value="join-using" />
+          <label for="join-using">Join Using: 
+          <input type="text" name="custom-join" id="custom-join" placeholder="-"><br>
+          <small><xmp><tag value="sample-item">Sample item</tag></xmp></small></label>
+        </div>
+      </div>
+    </div>
+
+    <!-- textarea and buttons -->
+
+    <div id="convert-area">
+      <div id="convert-text">
+        <textarea name="text-input" id="text-input" placeholder="Enter list to convert here"></textarea>
+        <button onclick="convertList()">Convert List</button>
+      </div>
+      <div id="converted-text">
+        <textarea name="convert-input" id="convert-input" placeholder="Converted list shows up here" readonly></textarea>
+        <button onclick="copyConvertedList()">Copy to clipboard</button>
+      </div>
+      </div>
+    </div>
+  </main>
+  <script src="script.js"></script>
+</body>
+
+</html>

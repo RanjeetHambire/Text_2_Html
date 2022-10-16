@@ -1,0 +1,28 @@
+@media only screen and (max-width:992px){
+    main{
+        padding: 1em;
+    }
+    #convertor-controls{
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr 1fr;
+        width: 25%;
+        float: left;
+    }
+}
+
+@media only screen and (max-width:620px){
+    main{
+        padding: 1em;
+    }
+    #convertor-controls{
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr 1fr;
+        width: 100%;
+    }
+    .radio-selector:nth-child(2){
+        grid-column: span 2;
+    }
+    
+}
